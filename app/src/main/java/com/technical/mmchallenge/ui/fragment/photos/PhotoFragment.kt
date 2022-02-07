@@ -16,7 +16,7 @@ import com.technical.mmchallenge.databinding.FragmentPhotoBinding
 import com.technical.mmchallenge.ui.activity.MainActivity
 import com.technical.mmchallenge.ui.adapter.PhotosAdapter
 
-class PhotoFragment: Fragment() {
+class PhotoFragment : Fragment() {
 
     private var _binding: FragmentPhotoBinding? = null
     private val binding get() = _binding!!
@@ -32,7 +32,7 @@ class PhotoFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         (activity as MainActivity).supportActionBar?.title = "Photo"
         _binding = FragmentPhotoBinding.inflate(inflater, container, false)
@@ -51,7 +51,7 @@ class PhotoFragment: Fragment() {
         binding.textDetail.text = photo.title
 
         binding.photoContainer.setOnClickListener {
-            if (binding.textDetail.isVisible){
+            if (binding.textDetail.isVisible) {
                 binding.textDetail.visibility = View.INVISIBLE
             } else {
                 binding.textDetail.visibility = View.VISIBLE
