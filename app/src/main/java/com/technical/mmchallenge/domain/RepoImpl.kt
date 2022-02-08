@@ -7,9 +7,9 @@ import com.technical.mmchallenge.vo.Resource
 
 /**
  * Created by Luis Grez on 05 February 2022
-*/
+ */
 
-class RepoImpl(private val dataSource: DataSource): Repo {
+class RepoImpl(private val dataSource: DataSource) : Repo {
     override suspend fun getAlbumsList(): Resource<List<Album>> {
         return dataSource.getAlbums()
     }

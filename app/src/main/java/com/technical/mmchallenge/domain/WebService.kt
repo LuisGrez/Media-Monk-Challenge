@@ -11,10 +11,10 @@ import retrofit2.http.Query
 
 interface WebService {
     @GET("albums")
-    suspend fun getAlbums() : List<Album>
+    suspend fun getAlbums(): List<Album>
 
     @GET("photos")
     suspend fun getPhotosList(
-        @Query("albumId") albumId : Int
-    ) : List<Photos>
+        @Query("albumId") albumId: Int
+    ): List<Photos>
 }

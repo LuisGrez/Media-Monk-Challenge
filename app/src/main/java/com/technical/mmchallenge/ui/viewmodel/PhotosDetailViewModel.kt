@@ -10,13 +10,12 @@ import com.technical.mmchallenge.vo.Resource
  * Created by Luis Grez on 06 February 2022
  */
 
-
-class PhotosDetailViewModel(private val repo: Repo): ViewModel() {
+class PhotosDetailViewModel(private val repo: Repo) : ViewModel() {
     fun fetchPhotosList(albumId: Int) = liveData<Resource<List<Photos>>> {
         emit(Resource.Loading())
         try {
             emit(repo.getPhotosList(albumId))
-        }catch (e: Exception){
+        } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
     }

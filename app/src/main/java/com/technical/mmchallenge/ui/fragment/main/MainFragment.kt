@@ -57,7 +57,7 @@ class MainFragment : Fragment(), MainAdapter.OnAlbumClickListener {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
         viewModelAlbums.fetchAlbumList.observe(viewLifecycleOwner, Observer { result ->
-            when(result){
+            when (result) {
                 is Resource.Loading -> {
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.rvAlbums.visibility = View.INVISIBLE
@@ -66,12 +66,15 @@ class MainFragment : Fragment(), MainAdapter.OnAlbumClickListener {
                     binding.progressCircular.visibility = View.INVISIBLE
                     binding.rvAlbums.adapter = MainAdapter(requireContext(), result.data, this)
                     binding.rvAlbums.visibility = View.VISIBLE
-                    binding.rvAlbums.animation = AnimationUtils.loadAnimation(context, R.anim.zoom_anim)
+                    binding.rvAlbums.animation =
+                        AnimationUtils.loadAnimation(context, R.anim.zoom_anim)
                 }
                 is Resource.Failure -> {
                     binding.progressCircular.visibility = View.INVISIBLE
                     binding.rvAlbums.visibility = View.INVISIBLE
-                    Toast.makeText(requireContext(), "Fail connection ${result.exception}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),
+                        "Fail connection ${result.exception}",
+                        Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -84,8 +87,9 @@ class MainFragment : Fragment(), MainAdapter.OnAlbumClickListener {
         findNavController().navigate(R.id.action_main_to_photos_list, bundle)
     }
 
-    private fun setUpRecyclerView(){
+    private fun setUpRecyclerView() {
         binding.rvAlbums.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvAlbums.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        binding.rvAlbums.addItemDecoration(DividerItemDecoration(requireContext(),
+            DividerItemDecoration.VERTICAL))
     }
 }

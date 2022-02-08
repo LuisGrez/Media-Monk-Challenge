@@ -53,7 +53,7 @@ class PhotosListFragment : Fragment(), PhotosAdapter.OnPhotoClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as MainActivity).supportActionBar?.title = "Photos list"
+        (activity as MainActivity).supportActionBar?.title = "Photos List"
         _binding = FragmentPhotosListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -62,7 +62,7 @@ class PhotosListFragment : Fragment(), PhotosAdapter.OnPhotoClickListener {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
         viewModelPhotos.fetchPhotosList(albumId!!).observe(viewLifecycleOwner, Observer { result ->
-            when(result){
+            when (result) {
                 is Resource.Loading -> {
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.rvPhotos.visibility = View.INVISIBLE
@@ -71,12 +71,15 @@ class PhotosListFragment : Fragment(), PhotosAdapter.OnPhotoClickListener {
                     binding.progressCircular.visibility = View.INVISIBLE
                     binding.rvPhotos.adapter = PhotosAdapter(requireContext(), result.data, this)
                     binding.rvPhotos.visibility = View.VISIBLE
-                    binding.rvPhotos.animation = AnimationUtils.loadAnimation(context, R.anim.zoom_anim)
+                    binding.rvPhotos.animation =
+                        AnimationUtils.loadAnimation(context, R.anim.zoom_anim)
                 }
                 is Resource.Failure -> {
                     binding.progressCircular.visibility = View.INVISIBLE
                     binding.rvPhotos.visibility = View.INVISIBLE
-                    Toast.makeText(requireContext(), "Fail connection ${result.exception}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),
+                        "Fail connection ${result.exception}",
+                        Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -89,9 +92,9 @@ class PhotosListFragment : Fragment(), PhotosAdapter.OnPhotoClickListener {
         findNavController().navigate(R.id.action_photos_list_to_photo, bundle)
     }
 
-    private fun setUpRecyclerView(){
+    private fun setUpRecyclerView() {
         binding.rvPhotos.layoutManager = GridLayoutManager(requireContext(), 4)
-        binding.rvPhotos.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        binding.rvPhotos.addItemDecoration(DividerItemDecoration(requireContext(),
+            DividerItemDecoration.VERTICAL))
     }
-
 }

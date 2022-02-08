@@ -14,10 +14,10 @@ import com.technical.mmchallenge.databinding.AlbumItemBinding
 
 class MainAdapter(
     private val context: Context, private val albumList: List<Album>,
-    private val itemClickListener: OnAlbumClickListener,
+    private val itemClickListener: OnAlbumClickListener
 ) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    interface OnAlbumClickListener{
+    interface OnAlbumClickListener {
         fun onAlbumClick(album: Album)
     }
 
@@ -37,12 +37,11 @@ class MainAdapter(
         return albumList.size
     }
 
-    inner class MainViewHolder(val binding: AlbumItemBinding) :
+    inner class MainViewHolder(private val binding: AlbumItemBinding) :
         BaseViewHolder<Album>(binding.root) {
         override fun bind(item: Album, position: Int) {
             binding.titleAlbum.text = item.title
             binding.albumContainer.setOnClickListener { itemClickListener.onAlbumClick(item) }
         }
-
     }
 }

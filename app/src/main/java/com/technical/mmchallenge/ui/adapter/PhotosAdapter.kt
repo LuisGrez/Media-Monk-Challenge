@@ -3,13 +3,11 @@ package com.technical.mmchallenge.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.technical.mmchallenge.base.BaseViewHolder
-import com.technical.mmchallenge.data.model.Album
 import com.technical.mmchallenge.data.model.Photos
 import com.technical.mmchallenge.databinding.PhotodDetailItemBinding
 
@@ -17,11 +15,13 @@ import com.technical.mmchallenge.databinding.PhotodDetailItemBinding
  * Created by Luis Grez on 06 February 2022
  */
 
-class PhotosAdapter(private val context: Context, private val photosList: List<Photos>,
-private val itemClickListener: OnPhotoClickListener) :
+class PhotosAdapter(
+    private val context: Context, private val photosList: List<Photos>,
+    private val itemClickListener: OnPhotoClickListener
+) :
     RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    interface OnPhotoClickListener{
+    interface OnPhotoClickListener {
         fun onPhotoClick(photo: Photos)
     }
 
@@ -56,7 +56,6 @@ private val itemClickListener: OnPhotoClickListener) :
                 .into(binding.photosDetail)
 
             binding.photosContainer.setOnClickListener { itemClickListener.onPhotoClick(item) }
-
         }
     }
 

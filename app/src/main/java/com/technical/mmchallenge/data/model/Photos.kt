@@ -13,5 +13,5 @@ data class Photos(
     val id: Int = 0,
     val title: String = "",
     val url: String = "",
-    val thumbnailUrl: String = "",
-): Parcelable
+    val thumbnailUrl: String = ""
+) : Parcelable

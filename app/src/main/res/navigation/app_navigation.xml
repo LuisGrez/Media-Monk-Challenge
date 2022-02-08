@@ -29,7 +29,6 @@
         android:id="@+id/photo"
         android:name="com.technical.mmchallenge.ui.fragment.photos.PhotoFragment"
         android:label="PhotoFragment"
-        tools:layout="@layout/fragment_photo">
-    </fragment>
+        tools:layout="@layout/fragment_photo"></fragment>
 
 </navigation>
